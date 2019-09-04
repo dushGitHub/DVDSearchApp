@@ -87,35 +87,13 @@ if ($result = mysqli_query($dbConnect, $sql)) {
 }
     echo"<br><br><br>";
     
-	/* Genres of the movies */
-    $sql = "Select DISTINCT Genre from Movies;"; 
-if ($result = mysqli_query($dbConnect, $sql)) {            
-    echo "Genre: <input list='genre' name='genre'>";
-    echo "<datalist id='genre'>";
-    while($record = mysqli_fetch_assoc($result)) { 
-        echo "<option value='".$record['Genre']."'>".$record['Genre']."</option>";                
-    }
-    echo "</datalist>";
-    mysqli_free_result($result);  
-}else {
-    printf("%s.<br />\n", mysqli_error($dbConnect));
-}
+
     
     /* close connection */
     mysqli_close($dbConnect);
 ?>
 
-  <br><br><br>
-  Search by :<pre>    ~ Title  
-      ~ Title, Genre   
-      ~ Genre, Rating, Year
-    ~ Title, Genre, Rating, Year</pre>    <br><br><br>
-  <input class ="block"  type="submit" name="submit" value="Search">   
-  <br><br><br>
-  <a href="/MoviesChart.php">View Most Poputer Movie List</a>  
-</form>
-</div>
-<br><br><br><br><br><br>
+  
 <?php require 'footer.php';?>
 </body>
 </html>
